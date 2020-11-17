@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+from fetch import *
 
 st.title('Corona Virus Statistics in Turkey')
 
@@ -19,6 +20,7 @@ def barchart(values, labels):
 
 @st.cache(allow_output_mutation=True)
 def load_data():
+    get_latest_data()
     data = pd.read_csv(DATA_URL)
     data['Date'] = pd.to_datetime(data['Date'])
     return data
