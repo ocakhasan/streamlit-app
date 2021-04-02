@@ -84,7 +84,7 @@ cpth.geojson.add_child(
 folium.LayerControl().add_to(m)
 folium_static(m)
 
-st.subheader("Risk Cases in the Map with numbers")
+st.subheader("Risk Cases in the Map with Numbers")
 
 m = folium.Map(location=[39.9208, 35], zoom_start=5.4,tiles="cartodbpositron")
 for i in range(cities.shape[0]):
