@@ -146,7 +146,7 @@ fig.add_trace(go.Scatter( y=df['daily_death_mean'],
 
 
 fig.update_layout(template='ggplot2')
-st.plotly_chart(fig)
+fig.show()
 
 #Test Numbers
 st.subheader('Test Numbers in Each Day')
