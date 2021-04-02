@@ -7,7 +7,7 @@ from fetch import *
 
 st.title('Corona Virus Statistics in Turkey')
 
-DATA_URL = 'turkey_covid19_all.csv'
+DATA_URL = "https://raw.githubusercontent.com/ocakhasan/covid_data/master/turkey_covid.csv" 
 
 def barchart(values, labels):
     fig = go.Figure(data=[go.Pie(labels=labels,
@@ -20,7 +20,6 @@ def barchart(values, labels):
 
 @st.cache(allow_output_mutation=True)
 def load_data():
-    get_latest_data()
     data = pd.read_csv(DATA_URL)
     data['Date'] = pd.to_datetime(data['Date'])
     return data
