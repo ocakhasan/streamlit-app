@@ -113,7 +113,15 @@ st.plotly_chart(fig)
 
 #Daily Cases
 st.subheader('Case Number in Each Day')
-fig = px.bar(df,y='Daily_Confirmed',color_discrete_sequence=['#1E8449'])
+
+df['daily_confirmed_mean'] = df['Daily_Confirmed'].rolling(7).mean()
+fig = go.Figure()
+
+fig.add_trace(go.Scatter( y=df['Daily_Confirmed'],
+                    mode='lines+markers',marker_color='blue',name='Daily Confirmed'))
+
+fig.add_trace(go.Scatter( y=df['daily_confirmed_mean'],
+                    mode='lines+markers',marker_color='red',name='7 Day Average'))
 fig.update_layout(template='plotly_dark')
 
 st.plotly_chart(fig)
@@ -126,8 +134,18 @@ st.plotly_chart(fig)
 
 #Daily Death Cases
 st.subheader('Death Numbers in Each Day')
-fig = px.bar(df,y='Daily_Death',color_discrete_sequence=['#E67E22'])
-fig.update_layout(template='plotly_dark')
+df['daily_death_mean'] = df['Daily_Death'].rolling(7).mean()
+fig = go.Figure()
+
+fig.add_trace(go.Scatter( y=df['Daily_Death'],
+                    mode='lines+markers',marker_color='blue',name='Daily Death Cases'))
+
+fig.add_trace(go.Scatter( y=df['daily_death_mean'],
+                    mode='lines+markers',marker_color='red',name='7 Day Average'))
+
+
+
+fig.update_layout(template='ggplot2')
 st.plotly_chart(fig)
 
 #Test Numbers
@@ -144,7 +162,17 @@ st.plotly_chart(fig)
 
 #Daily Recovered Cases
 st.subheader('Recovered Numbers in Each Day')
-fig = px.bar(df,y='Daily_Recovered',color_discrete_sequence=['#C0392B'])
+df['daily_recovered_mean'] = df['Daily_Recovered'].rolling(7).mean()
+fig = go.Figure()
+
+fig.add_trace(go.Scatter( y=df['Daily_Recovered'],
+                    mode='lines+markers',marker_color='blue',name='Daily Recovered Cases'))
+
+fig.add_trace(go.Scatter( y=df['daily_recovered_mean'],
+                    mode='lines+markers',marker_color='red',name='7 Day Average'))
+
+
+
 fig.update_layout(template='ggplot2')
 st.plotly_chart(fig)
 
