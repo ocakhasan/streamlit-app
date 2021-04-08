@@ -24,7 +24,7 @@ def barchart(values, labels):
     return fig
 
 @st.cache(allow_output_mutation=True)
-def load_data():
+def load_data(TTL=24*60*60):
     data = pd.read_csv(DATA_URL)
     data['Date'] = pd.to_datetime(data['Date'])
     cities = pd.read_csv(CITIES_URL)
